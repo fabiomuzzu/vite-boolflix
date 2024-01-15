@@ -14,7 +14,7 @@ export default {
 
 <template lang="">
   <div>
-    <h2>{{film.name}}</h2>
+
   </div>
 </template>
 
