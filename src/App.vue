@@ -29,7 +29,7 @@ export default {
             vote: element.vote_average,
           }
           store.films.push(obj);
-          
+
         });
       })
     }
