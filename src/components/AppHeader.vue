@@ -9,7 +9,7 @@ export default {
   methods: {
     
     doSearch(){
-      this.$emit('search', store.searchInput)
+      this.$emit('search', searchInput)
     }
     
   },

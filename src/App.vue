@@ -20,17 +20,7 @@ export default {
       let apiUrl = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
       axios.get(apiUrl).then((response) =>{
         store.films = response.data.results;
-        // arr.forEach(element => {
-        //   let obj = {
-        //     name: element.title,
-        //     original_name: element.original_title,
-        //     img: element.poster_path,
-        //     language: element.original_language,
-        //     vote: element.vote_average,
-        //   }
-        //   store.films.push(obj);
-
-        // });
+        
       })
     }
 
@@ -43,7 +33,7 @@ export default {
 
 <template lang="">
   {{store.films}}
-  <AppHeader />
+  <AppHeader @doSearch="getSearch" />
   <AppMain />
 </template>
 
