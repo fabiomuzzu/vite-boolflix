@@ -17,7 +17,7 @@ export default {
   methods: {
 
     getFilm(){
-      let apiUrl = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${searchInput}&language=${store.apiLanguage}`
+      let apiUrl = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
       axios.get(apiUrl).then((response) =>{
         store.films = response.data.results;
         // arr.forEach(element => {

@@ -14,7 +14,7 @@ export default {
 
 <template lang="">
   <h1>BoolFlix</h1>
-  <input v-model="searchInput" type="text" name="searchBar">
+  <input v-model="store.searchInput" type="text" name="searchBar">
   <button>Search</button>
 </template>
 
