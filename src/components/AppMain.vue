@@ -49,7 +49,7 @@ export default {
   <div class=" container-fluid ">
     <div>
       <h1>Films</h1>
-      <div class="d-flex flex-wrap ">
+      <div class="my-container d-flex flex-wrap">
         <!-- Ciclo v-for per recuperare i dati dall'array films-->
         <div  class=" my-card " v-for="(item, index) in store.films" :key="index">
           <!-- Baffi per print info dell'array -->
@@ -70,7 +70,7 @@ export default {
   
     <div>
       <h1>Series</h1>
-      <div class=" list-unstyled d-flex flex-wrap ">
+      <div class="my-container d-flex flex-wrap">
         <!-- Ciclo v-for per recuperare i dati dall'array films-->
         <div class=" my-card " v-for="(item, index) in store.series" :key="index">
           <!-- Baffi per print info dell'array -->
@@ -91,19 +91,24 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.my-card{
-  width: calc(100% / 6 - 20px);
-  padding-bottom: 20px;
-  border: 1px solid black;
-  margin: 10px;
-  .front{
-    img{
-      width: 100%;
-      height: 500px;
+.my-container{
+  .my-card{
+    width: calc(100% / 6 - 20px);
+    padding-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 2rem;
+    margin: 10px;
+    .front{
+      img{
+        width: 100%;
+        height: 500px;
+        border-radius: 2rem;
+      }
+    }
+  
+    .back{
     }
   }
-
-  .back{
-  }
+  
 }
 </style>
