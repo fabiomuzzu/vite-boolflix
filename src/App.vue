@@ -15,6 +15,9 @@ export default {
     }
   },
   methods: {
+    getSearch(){
+      this.getFilm()
+    },
 
     getFilm(){
       let apiUrl = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
