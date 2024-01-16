@@ -59,10 +59,7 @@ export default {
           store.series.push(obj);
         });
       })
-      console.log(store.series);
-      console.log(store.films);
     },
-
   },
   created() {
 

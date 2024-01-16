@@ -58,8 +58,18 @@ export default {
             <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">
           </div>
           <div class="back">
-            <div>Nome: {{item.name}}</div>
-            <div>Nome Originale: {{item.original_name}}</div>
+            <div class="text-center">
+              <div>
+                Nome:
+              </div>
+              {{item.name}}
+            </div>
+            <div class="text-center">
+              <div>
+                Nome Originale: 
+              </div>
+              {{item.original_name}}
+            </div>
             <!-- Utilizzo del bind :src per passaggio di item.language alla funzione getFlag -->
             <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"></div>
             <AppStar :vote="item.vote"/>
@@ -78,8 +88,18 @@ export default {
             <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="" >
           </div>
           <div class="back">
-            <div>Nome: {{item.name}}</div>
-            <div>Nome Originale: {{item.original_name}}</div>
+            <div class="text-center">
+              <div>
+                Nome:
+              </div>
+              {{item.name}}
+            </div>
+            <div class="text-center">
+              <div>
+                Nome Originale: 
+              </div>
+              {{item.original_name}}
+            </div>
             <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"> </div>
             <!-- Inserimento scheda per visualizzazione del voto -->
             <AppStar :vote="item.vote"/> 
@@ -92,7 +112,6 @@ export default {
 
 <style lang="scss" scoped>
 .my-container{
-  perspective: 900px;
   .my-card{
     width: calc(100% / 6 - 20px);
     height: 500px;

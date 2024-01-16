@@ -26,7 +26,7 @@ export default {
 <template lang="">
     <!-- Creazione del ciclo v-for per printare il numero di elementi contenuti nell'array, in questo caso 5 elementi-->
     <!-- Creazione del bind :class per assegnare i colori alle stelle, per il numero minore o uguale alla funzione getStarVote assegno il colore oro, altrimenti il colore grigio-->
-    <div>Voto: <i class="bi-star-fill" :class="item <= getStarVote() ? 'goldenStar' : 'grayStar'" v-for="(item, index) in five" :key="index" ></i></div>
+    <div>Voto: <i class="bi-star-fill" :class="item <= getStarVote() ? 'goldenStar' : 'grayStar'" v-for="(item, index) in five" :key="index"></i></div>
 </template>
 
 <style lang="scss" scoped>
