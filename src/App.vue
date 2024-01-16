@@ -16,26 +16,31 @@ export default {
   },
   methods: {
     getSearch(){
-      this.getFilm()
+      this.getFilm(),
+      this.getSeries()
     },
 
     getFilm(){
       let apiUrl = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
       axios.get(apiUrl).then((response) =>{
         store.films = response.data.results;
-        
       })
-    }
+    },
 
+    getSeries(){
+      let apiUrl = `${store.apiSearchTv}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
+      axios.get(apiUrl).then((response) =>{
+        store.series = response.data.results;
+      })
+    },
   },
   created(){
-    this.getFilm();
+    this.getSearch();
   },
 }
 </script>
 
 <template lang="">
-  {{store.films}}
   <AppHeader @doSearch="getSearch" />
   <AppMain />
 </template>
