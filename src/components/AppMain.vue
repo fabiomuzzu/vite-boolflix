@@ -46,7 +46,7 @@ export default {
           <ul>
             <li>Nome: {{item.name}}</li>
             <li>Nome Originale: {{item.original_name}}</li>
-            <li>Lingua: {{item.language}} <img :src="getFlag(item.language)" :alt="item.language"></li>
+            <li>Lingua: <img :src="getFlag(item.language)" :alt="item.language"></li>
             <li>Voto: {{item.vote}}</li>
           </ul>
         </li>
@@ -62,7 +62,7 @@ export default {
           <!-- Baffi per print info dell'array -->
             <li>Nome: {{item.name}}</li>
             <li>Nome Originale: {{item.original_name}}</li>
-            <li>Lingua: {{item.language}} <img :src="getFlag(item.language)" :alt="item.language"> </li>
+            <li>Lingua: <img :src="getFlag(item.language)" :alt="item.language"> </li>
             <li>Voto: {{item.vote}}</li>
           </ul>
         </li>
