@@ -17,12 +17,15 @@ export default {
   methods: {
 
     getSearch() {
+      // Variabili che creano l'url dall'API
       let apiUrlFilms = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
       let apiUrlSeries = `${store.apiSearchTv}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
 
+      // Chiamata url films
       axios.get(apiUrlFilms).then((response) => {
         let arr = response.data.results;
-        
+
+        // Creazione oggetto prendendo i dati dall'array dell'api
         arr.forEach(element => {
           let obj = {
             name: element.title,
@@ -31,9 +34,11 @@ export default {
             language: element.original_language,
             vote: element.vote_average,
           }
+          // Push dell'obj nell'array vuoto films
           store.films.push(obj);
         });
       })
+      // Chiamata url series
       axios.get(apiUrlSeries).then((response) => {
         let arr = response.data.results;
 
@@ -45,6 +50,8 @@ export default {
             language: element.original_language,
             vote: element.vote_average,
           }
+
+          // Push dell'obj nell'array vuoto series
           store.series.push(obj);
         });
       })
