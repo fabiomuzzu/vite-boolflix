@@ -17,6 +17,10 @@ export default {
   methods: {
 
     getSearch() {
+      // Reset dell'array di film e serie
+      store.films = [];
+      store.series = [];
+
       // Variabili che creano l'url dall'API
       let apiUrlFilms = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
       let apiUrlSeries = `${store.apiSearchTv}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
