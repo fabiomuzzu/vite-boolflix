@@ -46,80 +46,95 @@ export default {
 </script>
 
 <template lang="">
-  <div class=" container-fluid ">
-    <div>
-      <h1>Films</h1>
-      <div class="my-container d-flex flex-wrap">
-        <!-- Ciclo v-for per recuperare i dati dall'array films-->
-        <div  class=" my-card " v-for="(item, index) in store.films" :key="index">
-          <!-- Baffi per print info dell'array -->
-          <div class="front">
-            <!-- Utilizzo del bind :src per il passaggio di item.img alla funzione getImg, se link dell'immagine è presente utilizzare quello, altrimenti utilizzare altro link  -->
-            <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">
+  <main>
+
+    <div class=" container-fluid ">
+      <div>
+        <div class="d-flex justify-content-center ">
+          <h1>Films</h1>
+        </div>
+        <div class="my-container d-flex flex-wrap">
+          <!-- Ciclo v-for per recuperare i dati dall'array films-->
+          <div  class=" my-card " v-for="(item, index) in store.films" :key="index">
+            <!-- Baffi per print info dell'array -->
+            <div class="front">
+              <!-- Utilizzo del bind :src per il passaggio di item.img alla funzione getImg, se link dell'immagine è presente utilizzare quello, altrimenti utilizzare altro link  -->
+              <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">
+            </div>
+            <div class="back">
+              <div class="text-center">
+                <div>
+                  Nome:
+                </div>
+                {{item.name}}
+              </div>
+              <div class="text-center">
+                <div>
+                  Nome Originale: 
+                </div>
+                {{item.original_name}}
+              </div>
+              <!-- Utilizzo del bind :src per passaggio di item.language alla funzione getFlag -->
+              <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"></div>
+              <AppStar :vote="item.vote"/>
+            </div>
           </div>
-          <div class="back">
-            <div class="text-center">
-              <div>
-                Nome:
-              </div>
-              {{item.name}}
+        </div>
+      </div>
+    
+      <div>
+        <div class="d-flex justify-content-center ">
+          <h1>Series</h1>
+        </div>
+        <div class="my-container d-flex flex-wrap">
+          <!-- Ciclo v-for per recuperare i dati dall'array films-->
+          <div class=" my-card " v-for="(item, index) in store.series" :key="index">
+            <!-- Baffi per print info dell'array -->
+            <div class="front">
+              <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="" >
             </div>
-            <div class="text-center">
-              <div>
-                Nome Originale: 
+            <div class="back">
+              <div class="text-center">
+                <div>
+                  Nome:
+                </div>
+                {{item.name}}
               </div>
-              {{item.original_name}}
+              <div class="text-center">
+                <div>
+                  Nome Originale: 
+                </div>
+                {{item.original_name}}
+              </div>
+              <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"> </div>
+              <!-- Inserimento scheda per visualizzazione del voto -->
+              <AppStar :vote="item.vote"/> 
             </div>
-            <!-- Utilizzo del bind :src per passaggio di item.language alla funzione getFlag -->
-            <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"></div>
-            <AppStar :vote="item.vote"/>
           </div>
         </div>
       </div>
     </div>
-  
-    <div>
-      <h1>Series</h1>
-      <div class="my-container d-flex flex-wrap">
-        <!-- Ciclo v-for per recuperare i dati dall'array films-->
-        <div class=" my-card " v-for="(item, index) in store.series" :key="index">
-          <!-- Baffi per print info dell'array -->
-          <div class="front">
-            <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="" >
-          </div>
-          <div class="back">
-            <div class="text-center">
-              <div>
-                Nome:
-              </div>
-              {{item.name}}
-            </div>
-            <div class="text-center">
-              <div>
-                Nome Originale: 
-              </div>
-              {{item.original_name}}
-            </div>
-            <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"> </div>
-            <!-- Inserimento scheda per visualizzazione del voto -->
-            <AppStar :vote="item.vote"/> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>
+main{
+  color: white;
+  background-color: rgba(0, 0, 0, 0.84);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.235);
+  box-shadow: inset 0 0 20px 10px rgba(138, 138, 138, 0.235);
+}
 .my-container{
+  
   .my-card{
     width: calc(100% / 6 - 20px);
-    height: 500px;
+    height: 600px;
     padding-bottom: 20px;
     margin: 10px;
     position: relative;
     transition: 1500ms;
     transform-style: preserve-3d;
+    
 
     .front, 
     .back{
@@ -143,7 +158,7 @@ export default {
     }
     .frontImg{
       width: 100%;
-      height: 500px;
+      height: 100%;
       border-radius: 2rem;
     }
   }
