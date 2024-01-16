@@ -55,7 +55,7 @@ export default {
           <!-- Baffi per print info dell'array -->
           <div class="front">
             <!-- Utilizzo del bind :src per il passaggio di item.img alla funzione getImg, se link dell'immagine è presente utilizzare quello, altrimenti utilizzare altro link  -->
-            <img class="" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">
+            <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">
           </div>
           <div class="back">
             <div>Nome: {{item.name}}</div>
@@ -75,7 +75,7 @@ export default {
         <div class=" my-card " v-for="(item, index) in store.series" :key="index">
           <!-- Baffi per print info dell'array -->
           <div class="front">
-            <img class="" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="" >
+            <img class="frontImg" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="" >
           </div>
           <div class="back">
             <div>Nome: {{item.name}}</div>
@@ -92,23 +92,45 @@ export default {
 
 <style lang="scss" scoped>
 .my-container{
+  perspective: 900px;
   .my-card{
     width: calc(100% / 6 - 20px);
+    height: 500px;
     padding-bottom: 20px;
-    border: 1px solid black;
-    border-radius: 2rem;
     margin: 10px;
-    .front{
-      img{
-        width: 100%;
-        height: 500px;
-        border-radius: 2rem;
-      }
-    }
-  
+    position: relative;
+    transition: 1500ms;
+    transform-style: preserve-3d;
+
+    .front, 
     .back{
+      width: 100%;
+      height: 100%;
+      border-radius: 2rem;
+      box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+      position: absolute;
+      backface-visibility: hidden;
+    }
+    
+    .back{
+      background-color: #3a3a3a;
+      color: white;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5rem;
+    }
+    .frontImg{
+      width: 100%;
+      height: 500px;
+      border-radius: 2rem;
     }
   }
-  
+  .my-card:hover{
+    cursor: pointer;
+    transform: rotateY(180deg);
+  }
 }
 </style>
