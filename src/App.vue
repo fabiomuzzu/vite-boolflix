@@ -71,6 +71,7 @@ export default {
 </script>
 
 <template lang="">
+  <!-- Recupero dell'emit da AppHeader e lo reindirizzo alla funzione getSearch per filtrare risultati -->
   <AppHeader @search_btn="getSearch" />
   <AppMain />
 </template>

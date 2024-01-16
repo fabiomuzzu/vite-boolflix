@@ -14,7 +14,7 @@ export default {
 
   methods: {
     getImg(image){
-
+      // Funzione che mi unisce l'url "inziale" dell'api al path "finale" delle immagini
       return `${store.apiImg}${image}`
     },
 
@@ -54,11 +54,13 @@ export default {
         <div  class=" my-card " v-for="(item, index) in store.films" :key="index">
           <!-- Baffi per print info dell'array -->
           <div class="front">
+            <!-- Utilizzo del bind :src per il passaggio di item.img alla funzione getImg, se link dell'immagine è presente utilizzare quello, altrimenti utilizzare altro link  -->
             <img class="" :src="item.img ? `${getImg(item.img)}` : 'https://dessertdivine.com.au/wp-content/uploads/2022/02/Image-Not-Available.png'" alt="">
           </div>
           <div class="back">
             <div>Nome: {{item.name}}</div>
             <div>Nome Originale: {{item.original_name}}</div>
+            <!-- Utilizzo del bind :src per passaggio di item.language alla funzione getFlag -->
             <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"></div>
             <AppStar :vote="item.vote"/>
           </div>
@@ -79,7 +81,8 @@ export default {
             <div>Nome: {{item.name}}</div>
             <div>Nome Originale: {{item.original_name}}</div>
             <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"> </div>
-            <AppStar :vote="item.vote"/>
+            <!-- Inserimento scheda per visualizzazione del voto -->
+            <AppStar :vote="item.vote"/> 
           </div>
         </div>
       </div>
