@@ -8,18 +8,15 @@ export default {
   },
   methods: {
     
-    doSearch(){
-      this.$emit('search', searchInput)
-    }
     
-  },
+  }
 }
 </script>
 
 <template lang="">
   <h1>BoolFlix</h1>
-  <input v-model="store.searchInput" type="text" name="searchBar" @keyup.enter="doSearch">
-  <button @click="doSearch">search</button>
+  <input v-model="store.searchInput" type="text" >
+  <button @click="$emit('search_btn')">search</button>
 </template>
 
 <style lang="">

@@ -1,11 +1,11 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import {store} from './store.js';
+import { store } from './store.js';
 import axios from 'axios';
 
 export default {
-  components:{
+  components: {
     AppHeader,
     AppMain,
   },
@@ -15,33 +15,52 @@ export default {
     }
   },
   methods: {
-    getSearch(){
-      this.getFilm(),
-      this.getSeries()
+
+    getSearch() {
+      let apiUrlFilms = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
+      let apiUrlSeries = `${store.apiSearchTv}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
+
+      axios.get(apiUrlFilms).then((response) => {
+        let arr = response.data.results;
+        
+        arr.forEach(element => {
+          let obj = {
+            name: element.title,
+            original_name: element.original_title,
+            img: element.poster_path,
+            language: element.original_language,
+            vote: element.vote_average,
+          }
+          store.films.push(obj);
+        });
+      })
+      axios.get(apiUrlSeries).then((response) => {
+        let arr = response.data.results;
+
+        arr.forEach(element => {
+          let obj = {
+            name: element.name,
+            original_name: element.original_name,
+            img: element.poster_path,
+            language: element.original_language,
+            vote: element.vote_average,
+          }
+          store.series.push(obj);
+        });
+      })
+      console.log(store.series);
+      console.log(store.films);
     },
 
-    getFilm(){
-      let apiUrl = `${store.apiSearchMovie}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
-      axios.get(apiUrl).then((response) =>{
-        store.films = response.data.results;
-      })
-    },
-
-    getSeries(){
-      let apiUrl = `${store.apiSearchTv}?api_key=${store.apiKey}&query=${store.searchInput}&language=${store.apiLanguage}`
-      axios.get(apiUrl).then((response) =>{
-        store.series = response.data.results;
-      })
-    },
   },
-  created(){
-    this.getSearch();
+  created() {
+
   },
 }
 </script>
 
 <template lang="">
-  <AppHeader @doSearch="getSearch" />
+  <AppHeader @search_btn="getSearch" />
   <AppMain />
 </template>
 
