@@ -1,6 +1,10 @@
 <script>
 import {store} from '../store.js';
+import AppStar from './AppStar.vue';
 export default {
+  components: {
+    AppStar
+  },
   
   data() {
     return {
@@ -36,6 +40,7 @@ export default {
       // Restiuisce la variabile url
       return urlImg;
     }
+
   }
 }
 </script>
@@ -55,7 +60,7 @@ export default {
             <div>Nome: {{item.name}}</div>
             <div>Nome Originale: {{item.original_name}}</div>
             <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"></div>
-            <div>Voto: {{item.vote}}</div>
+            <AppStar :vote="item.vote"/>
           </div>
         </div>
       </div>
@@ -74,7 +79,7 @@ export default {
             <div>Nome: {{item.name}}</div>
             <div>Nome Originale: {{item.original_name}}</div>
             <div>Lingua: <img :src="getFlag(item.language)" :alt="item.language"> </div>
-            <div>Voto: {{item.vote}}</div>
+            <AppStar :vote="item.vote"/>
           </div>
         </div>
       </div>
